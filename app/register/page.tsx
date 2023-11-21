@@ -1,4 +1,5 @@
 'use client'
+import { register } from "module";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -7,13 +8,13 @@ export default function FirstPost() {
   const [password, setPassword] = useState('');
   const [responseData, setResponseData] = useState(null);
 
-  const login = async () => {
+  const register = async () => {
     const data = {
       username: username,
       password: password
     };
     const json = JSON.stringify(data);
-    const url = 'http://localhost:5000/login';
+    const url = 'http://localhost:5000/register';
     console.log(json)
 
     try {
@@ -41,7 +42,7 @@ export default function FirstPost() {
         <h6 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-2xl">
           <Link href="/">Back to home</Link>
         </h6>
-        <h6 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-2xl">Login</h6>
+        <h6 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-2xl">Register</h6>
         <div className="m-5">
           <input
             type="textfield"
@@ -65,16 +66,16 @@ export default function FirstPost() {
           ></input>
         </div>
         <div className="content-center">
-          <button onClick={login} className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Login
+          <button onClick={register} className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Register
           </button>
         </div>
-        {/* {responseData && (
+        {responseData && (
           <div>
             <h2>JSON Response:</h2>
             <pre>{JSON.stringify(responseData, null, 2)}</pre>
           </div>
-        )} */}
+        )}
       </div>
     </main>
   );
