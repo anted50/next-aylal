@@ -3,29 +3,22 @@ import Link from "next/link";
 import React, { useState } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
-// import { IoFastFood } from "react-icons/io5";
-// import { FaCarAlt } from "react-icons/fa";
-// import { FaBuilding } from "react-icons/fa";
-import router, { useRouter } from "next/navigation";
+import { IoFastFood } from "react-icons/io5";
+import { FaCarAlt } from "react-icons/fa";
+import { FaBuilding } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter()
   const slides = [
     {
-      url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
+      url: 'https://cdn.pixabay.com/photo/2023/11/16/15/17/sea-8392560_1280.jpg',
     },
     {
-      url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
+      url: 'https://cdn.pixabay.com/photo/2023/11/13/18/05/landscape-8386075_1280.jpg',
     },
     {
-      url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
-    },
-
-    {
-      url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
+      url: 'https://cdn.pixabay.com/photo/2023/11/15/16/21/winter-landscape-8390427_1280.jpg',
     },
   ];
 
@@ -54,8 +47,18 @@ export default function Home() {
 
 
   return (
-    <main className="bg-neutral-200">
-      <div className='max-w-[800px] h-[480px] w-full m-auto py-16 px-4 relative group'>
+    <main className="m-2 relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-[800px] sm:rounded-lg sm:px-10">
+
+      <div className="max-w-[800px] mx-auto flex flex-row-reverse content-center">
+        <div className=" p-5 text-black font-bold text-2xl">
+          <Link href="/register">register</Link>
+        </div>
+        <div className=" p-5 text-black font-bold text-2xl">
+          <Link href="/login">login</Link>
+        </div>
+      </div>
+
+      <div className='max-w-[800px] h-[480px] w-full m-auto py-4 px-4 relative group'>
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
           className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
@@ -82,57 +85,28 @@ export default function Home() {
       </div>
 
 
-      {/* TODO : make the button redirect to a path*/}
-      <div className="flex flex-row m-10 content-center">
-        <div className="">
-          <button onClick={() => router.push('/homepage')} className="m-3 p-4 bg-sky-200 rounded-full w-20 h-20 content-center">
-            {/* <IoFastFood color="rgb(8 47 73)" size={32} /> */}
-            <div className="text-sky-950 text-xs font-bold">Ресторан, хоолны газар</div>
-          </button>
-        </div>
+      <div className="max-w-[800px] mx-auto flex flex-row mt-10 content-center">
+        <button onClick={() => router.push('/homepage')} className="m-2 flex flex-col mx-auto">
+          <div className="bg-blue-100 rounded-full w-20 h-20 content-center flex flex-col">
+            <IoFastFood className="mx-auto mt-5" color="rgb(23 37 84)" size={40} />
+          </div>
+          <div className="mt-1 text-sky-950 text-xs font-bold w-20 text-center">Ресторан, хоолны газар</div>
+        </button>
+        <button onClick={() => router.push('/test')} className="m-2 flex flex-col mx-auto">
+          <div className="bg-blue-100 rounded-full w-20 h-20 content-center flex flex-col">
+            <FaCarAlt className="mx-auto mt-5" color="rgb(23 37 84)" size={40} />
+          </div>
+          <div className="mt-1 text-sky-950 text-xs font-bold w-20 text-center">Аялалын газар</div>
+        </button>
 
-        <div className="">
-          <button onClick={() => router.push('/homepage')} className="m-3 p-4 bg-sky-200 rounded-full w-20 h-20 content-center">
-            {/* <FaCarAlt color="rgb(8 47 73)" size={32} /> */}
-            <div className="text-sky-950 text-xs font-bold">Унаа</div>
-          </button>
-        </div>
-
-        <div className="">
-          <button onClick={() => router.push('/homepage')} className="m-3 p-4 bg-sky-200 rounded-full w-20 h-20 content-center">
-            {/* <FaBuilding color="rgb(8 47 73)" size={32} /> */}
-            <div className="text-sky-950 text-xs font-bold">Зочид буудал</div>
-          </button>
-        </div>
-
-        <div className="">
-          <button onClick={() => router.push('/homepage')} className="m-3 p-4 bg-sky-200 rounded-full w-20 h-20 content-center">
-            {/* <FaBuilding color="rgb(8 47 73)" size={32} /> */}
-            <div className="text-sky-950 text-xs font-bold">Амралтын газар</div>
-          </button>
-        </div>
-
-        <div className="">
-          <button onClick={() => router.push('/homepage')} className="m-3 p-4 bg-sky-200 rounded-full w-20 h-20 content-center">
-            {/* <FaBuilding color="rgb(8 47 73)" size={32} /> */}
-            <div className="text-sky-950 text-xs font-bold">Шатахуун</div>
-          </button>
-        </div>
+        <button onClick={() => router.push('/test/test2')} className="m-2 flex flex-col mx-auto">
+          <div className="bg-blue-100 rounded-full w-20 h-20 content-center flex flex-col">
+            <FaBuilding className="mx-auto mt-5" color="rgb(23 37 84)" size={40} />
+          </div>
+          <div className="mt-1 text-sky-950 text-xs font-bold w-20 text-center">Зочид буудал</div>
+        </button>
       </div>
 
-
-      <div className=" p-5 text-black font-bold text-2xl">
-        <Link href="/homepage">page</Link>
-      </div>
-      <div className=" p-5 text-black font-bold text-2xl">
-        <Link href="/login">login</Link>
-      </div>
-      <div className=" p-5 text-black font-bold text-2xl">
-        <Link href="/register">register</Link>
-      </div>
-      <div className=" p-5 text-black font-bold text-2xl">
-        <Link href="/test">test</Link>
-      </div>
     </main>
 
   )

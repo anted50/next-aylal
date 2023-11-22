@@ -2,14 +2,15 @@ import Image from "next/image";
 import React from "react";
 
 
-async function getInfo() {
+async function getInfo( a:string ) {
+  var b = parseInt(a)
   const requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache'
     },
-    body: JSON.stringify({ "id": 1 }),
+    body: JSON.stringify({ "id": b }),
   };
 
   const response = await fetch('http://localhost:5000/get', requestOptions)
@@ -33,8 +34,8 @@ function foodConverter(a: boolean) {
     return b
   }
 }
-export default async function Home() {
-  const info = await getInfo()
+export default async function Home( {params}:{params:{testId:string}} ) {
+  const info = await getInfo(params.testId)
   return (
     <div >
       <section className="w-full flex-center flex-col py-2 space-y-2">

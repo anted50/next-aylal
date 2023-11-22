@@ -14,7 +14,6 @@ export default function FirstPost() {
     };
     const json = JSON.stringify(data);
     const url = 'http://localhost:5000/login';
-    console.log(json)
 
     try {
       const response = await fetch(url, {
